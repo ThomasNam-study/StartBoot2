@@ -1,5 +1,6 @@
 package kr.purred.startboot2.test;
 
+import kr.purred.startboot2.model.calc.ArithmeticCalculator;
 import kr.purred.startboot2.model.shop.model.CashierSimple;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,6 +15,9 @@ public class CoreTest
 	@Autowired
 	CashierSimple cashierSimple;
 
+	@Autowired
+	ArithmeticCalculator calculator;
+
 	@Test
 	public void test ()
 	{
@@ -21,4 +25,13 @@ public class CoreTest
 
 		System.out.println (cashierSimple);
 	}
+
+	@Test
+	public void aopTest1 ()
+	{
+		System.out.println (calculator.add (4, 5));
+		System.out.println (calculator.sub (10, 5));
+	}
+
+
 }
