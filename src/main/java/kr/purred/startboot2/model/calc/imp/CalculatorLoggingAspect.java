@@ -13,7 +13,10 @@ import java.util.Arrays;
 @Order(0)
 public class CalculatorLoggingAspect
 {
-	@Before ("execution(* kr.purred.startboot2.model.calc.ArithmeticCalculator.add(..))")
+	@Pointcut("execution(* kr.purred.startboot2.model.calc.ArithmeticCalculator.add(..))")
+	private void addOperation() {}
+
+	@Before ("addOperation()")
 	public void logBefore ()
 	{
 		System.out.println ("before log");
