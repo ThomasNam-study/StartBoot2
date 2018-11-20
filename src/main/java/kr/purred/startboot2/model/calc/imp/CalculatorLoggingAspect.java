@@ -1,5 +1,9 @@
 package kr.purred.startboot2.model.calc.imp;
 
+import com.sun.webkit.dom.CounterImpl;
+import kr.purred.startboot2.model.calc.Counter;
+import kr.purred.startboot2.model.calc.MaxCalculator;
+import kr.purred.startboot2.model.calc.MinCalculator;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -21,6 +25,8 @@ public class CalculatorLoggingAspect
 	{
 		System.out.println ("before log");
 	}
+
+
 
 	@Before ("execution(* kr.purred.startboot2.model.calc.ArithmeticCalculator.*(..))")
 	public void executeAll (JoinPoint joinPoint)
@@ -56,5 +62,29 @@ public class CalculatorLoggingAspect
 		{
 			throw e;
 		}
+	}
+
+	@After("execution(* kr.purred.startboot2.model.calc.*Calculator.*(..))" + " && this(counter)")
+	public void increseCount (Counter counter)
+	{
+		counter.increase ();
+	}
+
+	@DeclareParents (value = "kr.purred.startboot2.model.calc.imp.ArithmeticCalculatorImp", defaultImpl = MaxCalculatorImp.class)
+	public MaxCalculator maxCalculator;
+
+	@DeclareParents (value = "kr.purred.startboot2.model.calc.imp.ArithmeticCalculatorImp", defaultImpl = MinCalculatorImp.class)
+	public MinCalculator minCalculator;
+
+	@DeclareParents (value = "kr.purred.startboot2.model.calc.imp.*CalculatorImp", defaultImpl = CounterImp.class)
+	public Counter counter;
+
+	@Pointcut("@annotation(kr.purred.startboot2.model.calc.LoggingRequired)")
+	public void loggingOperation() {}
+
+	@Before ("loggingOperation()")
+	public void loggingOperationBefore ()
+	{
+		System.out.println ("login req before log");
 	}
 }

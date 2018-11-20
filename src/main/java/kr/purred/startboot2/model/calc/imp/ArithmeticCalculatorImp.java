@@ -1,11 +1,13 @@
 package kr.purred.startboot2.model.calc.imp;
 
 import kr.purred.startboot2.model.calc.ArithmeticCalculator;
+import kr.purred.startboot2.model.calc.LoggingRequired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class ArithmeticCalculatorImp implements ArithmeticCalculator
 {
+	@LoggingRequired
 	@Override
 	public double add (double a, double b)
 	{
