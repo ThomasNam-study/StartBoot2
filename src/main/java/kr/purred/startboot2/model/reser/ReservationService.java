@@ -7,4 +7,6 @@ import java.util.List;
 public interface ReservationService
 {
 	List<Reservation> query (String courtName);
+
+	List<Reservation> all ();
 }

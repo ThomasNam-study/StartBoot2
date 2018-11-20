@@ -21,13 +21,19 @@ public class ReservationServiceImp implements ReservationService
 
 	public ReservationServiceImp ()
 	{
-		reservations.add (new Reservation ("Tennis #1", LocalDate.of (2008, 1, 14), 16, new Player ("Roger", "N/A"), TENNIS));
-		reservations.add (new Reservation ("Tennis #2", LocalDate.of (2008, 1, 14), 20, new Player ("Roger", "N/A"), TENNIS));
+		reservations.add (new Reservation ("Tennis #1", java.sql.Date.valueOf (LocalDate.of (2008, 1, 14)), 16, new Player ("Roger", "N/A"), TENNIS));
+		reservations.add (new Reservation ("Tennis #2", java.sql.Date.valueOf (LocalDate.of (2008, 1, 14)), 20, new Player ("Roger", "N/A"), TENNIS));
 	}
 
 	@Override
 	public List<Reservation> query (String courtName)
 	{
 		return reservations.stream ().filter ((r) -> r.getCourtName ().equals (courtName)).collect(Collectors.toList ());
+	}
+
+	@Override
+	public List<Reservation> all ()
+	{
+		return new ArrayList<> (reservations);
 	}
 }

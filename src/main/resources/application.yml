@@ -1,0 +1,10 @@
+spring:
+  mvc:
+    favicon:
+      enabled: false
+
+    view:
+
+      prefix: /WEB-INF/view/
+      suffix: .jsp
+

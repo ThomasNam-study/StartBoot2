@@ -10,7 +10,7 @@ public class Reservation
 {
 	private String courtName;
 
-	private LocalDate date;
+	private Date date;
 
 	private int hour;
 
@@ -22,7 +22,7 @@ public class Reservation
 	{
 	}
 
-	public Reservation (String courtName, LocalDate date, int hour, Player player, SportType sportType)
+	public Reservation (String courtName, Date date, int hour, Player player, SportType sportType)
 	{
 		this.courtName = courtName;
 		this.date = date;

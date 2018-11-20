@@ -32,7 +32,7 @@ public class ExecutorConfiguration
 		return new SyncTaskExecutor ();
 	}
 
-	@Bean
+	/*@Bean
 	public ScheduledExecutorTask scheduledExecutorTask(Runnable runnable)
 	{
 		ScheduledExecutorTask task = new ScheduledExecutorTask ();
@@ -51,7 +51,7 @@ public class ExecutorConfiguration
 		factoryBean.setScheduledExecutorTasks (scheduledExecutorTask);
 
 		return factoryBean;
-	}
+	}*/
 
 	@Bean
 	public ThreadPoolTaskExecutor threadPoolTaskExecutor ()

@@ -21,20 +21,22 @@ public class ReservationQueryCt
 	private final ReservationService reservationService;
 
 	@GetMapping
-	public void setupForm ()
+	public void setupForm (Model model)
 	{
+		List<Reservation> reservationList = reservationService.all ();
 
+		model.addAttribute ("list", reservationList);
 	}
 
 	@PostMapping
 	public String submitForm (@RequestParam("courtName") String courtName, Model model)
 	{
-		List<Reservation> reservationList = Collections.emptyList ();
+		List<Reservation> reservationList;
 
 		if (courtName != null)
-		{
 			reservationList = reservationService.query (courtName);
-		}
+		else
+			reservationList = reservationService.all ();
 
 		model.addAttribute ("list", reservationList);
 
