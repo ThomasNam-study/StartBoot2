@@ -4,11 +4,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sp" uri="http://www.springframework.org/tags" %>
 
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
+<jsp:include page="top.jsp"/>
+
     <h2><sp:message code = "welcome.title"/> to Court Reservation System</h2>
 
 Today is <fmt:formatDate value="${today}" pattern="yyyy-MM-dd"/><br/>
