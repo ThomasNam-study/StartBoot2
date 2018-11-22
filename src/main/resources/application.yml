@@ -8,3 +8,6 @@ spring:
       prefix: /WEB-INF/view/
       suffix: .jsp
 
+  messages:
+    basename: text/welcome
+
