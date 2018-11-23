@@ -1,4 +1,4 @@
-package kr.purred.startboot2.model.reser.domain;
+package kr.purred.startboot2.model.reservation.domain;
 
 import lombok.Data;
 

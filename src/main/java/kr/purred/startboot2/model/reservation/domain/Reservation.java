@@ -1,8 +1,7 @@
-package kr.purred.startboot2.model.reser.domain;
+package kr.purred.startboot2.model.reservation.domain;
 
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.util.Date;
 
 @Data

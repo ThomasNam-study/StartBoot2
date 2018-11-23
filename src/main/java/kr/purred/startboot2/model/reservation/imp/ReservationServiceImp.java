@@ -1,9 +1,10 @@
-package kr.purred.startboot2.model.reser.imp;
+package kr.purred.startboot2.model.reservation.imp;
 
-import kr.purred.startboot2.model.reser.ReservationService;
-import kr.purred.startboot2.model.reser.domain.Player;
-import kr.purred.startboot2.model.reser.domain.Reservation;
-import kr.purred.startboot2.model.reser.domain.SportType;
+import kr.purred.startboot2.model.reservation.ReservationNotAvailableException;
+import kr.purred.startboot2.model.reservation.ReservationService;
+import kr.purred.startboot2.model.reservation.domain.Player;
+import kr.purred.startboot2.model.reservation.domain.Reservation;
+import kr.purred.startboot2.model.reservation.domain.SportType;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -35,5 +36,20 @@ public class ReservationServiceImp implements ReservationService
 	public List<Reservation> all ()
 	{
 		return new ArrayList<> (reservations);
+	}
+
+	@Override
+	public void make (Reservation reservation) throws ReservationNotAvailableException
+	{
+		long cnt = reservations.stream ()
+				.filter ((m) -> m.getCourtName ().equals (reservation.getCourtName ()))
+				.filter ((m) -> m.getDate ().equals (reservation.getDate ()))
+				.filter ((m) -> m.getHour () == reservation.getHour ())
+				.count ();
+
+		if (cnt > 0)
+			throw new ReservationNotAvailableException (reservation.getCourtName (), reservation.getDate (), reservation.getHour ());
+
+		reservations.add (reservation);
 	}
 }
