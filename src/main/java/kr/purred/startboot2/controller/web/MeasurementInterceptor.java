@@ -27,7 +27,8 @@ public class MeasurementInterceptor implements HandlerInterceptor
 
 		long endTime = System.currentTimeMillis ();
 
-		modelAndView.addObject ("handlingTime", endTime - startTime);
+		if (modelAndView != null)
+			modelAndView.addObject ("handlingTime", endTime - startTime);
 	}
 
 	@Override

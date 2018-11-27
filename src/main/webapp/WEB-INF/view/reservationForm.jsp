@@ -34,6 +34,22 @@
             <Td><form:input path="hour"/></Td>
             <Td><form:errors path="hour" cssClass="error"/></Td>
         </Tr>
+        <Tr>
+            <td>Player name</td>
+            <Td><form:input path="player.name"/></Td>
+            <Td><form:errors path="player.name" cssClass="error"/></Td>
+        </Tr>
+        <Tr>
+            <td>Player phone</td>
+            <Td><form:input path="player.phone"/></Td>
+            <Td><form:errors path="player.phone" cssClass="error"/></Td>
+        </Tr>
+        <Tr>
+            <td>Player phone</td>
+            <Td><form:select path="sportType" items="${sportTypes}" itemValue="id" itemLabel="name"/></Td>
+            <Td><form:errors path="sportType" cssClass="error"/></Td>
+        </Tr>
+
         <tr>
             <td colspan="3">
                 <input type = "submit"/>

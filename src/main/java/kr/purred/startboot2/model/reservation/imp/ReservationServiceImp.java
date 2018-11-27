@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -51,5 +52,25 @@ public class ReservationServiceImp implements ReservationService
 			throw new ReservationNotAvailableException (reservation.getCourtName (), reservation.getDate (), reservation.getHour ());
 
 		reservations.add (reservation);
+	}
+
+	@Override
+	public List<SportType> getAllSportTypes ()
+	{
+		return Arrays.asList (TENNIS, SOCCER);
+	}
+
+	@Override
+	public SportType getSportType (int sportTypeId)
+	{
+		switch (sportTypeId)
+		{
+			case 1:
+				return TENNIS;
+			case 2:
+				return SOCCER;
+			default:
+				return null;
+		}
 	}
 }
