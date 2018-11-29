@@ -81,6 +81,17 @@ public class ReservationServiceImp implements ReservationService
 		LocalDate fromDate = new java.sql.Date (periodicReservation.getFromDate ().getTime ()).toLocalDate ();
 		LocalDate toDate = new java.sql.Date (periodicReservation.getToDate ().getTime ()).toLocalDate ();
 
+		while (fromDate.isBefore (toDate))
+		{
+			Reservation reservation = new Reservation ();
+			reservation.setCourtName (periodicReservation.getCountName ());
+			reservation.setDate (java.sql.Date.valueOf (fromDate));
+			reservation.setHour (periodicReservation.getHour ());
+			reservation.setPlayer (periodicReservation.getPlayer ());
 
+			make (reservation);
+
+			fromDate = fromDate.plusDays (periodicReservation.getPeriod ());
+		}
 	}
 }
