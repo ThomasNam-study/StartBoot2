@@ -2,6 +2,7 @@ package kr.purred.startboot2.model.reservation.imp;
 
 import kr.purred.startboot2.model.reservation.ReservationNotAvailableException;
 import kr.purred.startboot2.model.reservation.ReservationService;
+import kr.purred.startboot2.model.reservation.domain.PeriodicReservation;
 import kr.purred.startboot2.model.reservation.domain.Player;
 import kr.purred.startboot2.model.reservation.domain.Reservation;
 import kr.purred.startboot2.model.reservation.domain.SportType;
@@ -72,5 +73,14 @@ public class ReservationServiceImp implements ReservationService
 			default:
 				return null;
 		}
+	}
+
+	@Override
+	public void makePeriodic (PeriodicReservation periodicReservation) throws ReservationNotAvailableException
+	{
+		LocalDate fromDate = new java.sql.Date (periodicReservation.getFromDate ().getTime ()).toLocalDate ();
+		LocalDate toDate = new java.sql.Date (periodicReservation.getToDate ().getTime ()).toLocalDate ();
+
+
 	}
 }

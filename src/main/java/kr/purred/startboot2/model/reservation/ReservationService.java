@@ -1,5 +1,6 @@
 package kr.purred.startboot2.model.reservation;
 
+import kr.purred.startboot2.model.reservation.domain.PeriodicReservation;
 import kr.purred.startboot2.model.reservation.domain.Reservation;
 import kr.purred.startboot2.model.reservation.domain.SportType;
 
@@ -16,4 +17,6 @@ public interface ReservationService
 	List<SportType> getAllSportTypes ();
 
 	SportType getSportType (int sportTypeId);
+
+	void makePeriodic (PeriodicReservation periodicReservation) throws ReservationNotAvailableException;
 }
