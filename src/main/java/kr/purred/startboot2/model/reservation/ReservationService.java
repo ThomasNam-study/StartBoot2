@@ -4,6 +4,8 @@ import kr.purred.startboot2.model.reservation.domain.PeriodicReservation;
 import kr.purred.startboot2.model.reservation.domain.Reservation;
 import kr.purred.startboot2.model.reservation.domain.SportType;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface ReservationService
@@ -19,4 +21,6 @@ public interface ReservationService
 	SportType getSportType (int sportTypeId);
 
 	void makePeriodic (PeriodicReservation periodicReservation) throws ReservationNotAvailableException;
+
+	List<Reservation> findByDate (LocalDate date);
 }

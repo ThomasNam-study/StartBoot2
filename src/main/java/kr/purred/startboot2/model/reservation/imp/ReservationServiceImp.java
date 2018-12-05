@@ -9,9 +9,7 @@ import kr.purred.startboot2.model.reservation.domain.SportType;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -93,5 +91,11 @@ public class ReservationServiceImp implements ReservationService
 
 			fromDate = fromDate.plusDays (periodicReservation.getPeriod ());
 		}
+	}
+
+	@Override
+	public List<Reservation> findByDate (LocalDate date)
+	{
+		return reservations.stream ().filter ((r) -> Objects.equals (new java.sql.Date (r.getDate ().getTime ()).toLocalDate (), date)).collect(Collectors.toList());
 	}
 }
