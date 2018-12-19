@@ -1,16 +1,21 @@
 package kr.purred.startboot2.model.reservation.imp;
 
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
+
 import kr.purred.startboot2.model.reservation.ReservationNotAvailableException;
 import kr.purred.startboot2.model.reservation.ReservationService;
 import kr.purred.startboot2.model.reservation.domain.PeriodicReservation;
 import kr.purred.startboot2.model.reservation.domain.Player;
 import kr.purred.startboot2.model.reservation.domain.Reservation;
 import kr.purred.startboot2.model.reservation.domain.SportType;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class ReservationServiceImp implements ReservationService
@@ -97,5 +102,13 @@ public class ReservationServiceImp implements ReservationService
 	public List<Reservation> findByDate (LocalDate date)
 	{
 		return reservations.stream ().filter ((r) -> Objects.equals (new java.sql.Date (r.getDate ().getTime ()).toLocalDate (), date)).collect(Collectors.toList());
+	}
+
+	@Async
+	@Override
+	public void testFunc ()
+	{
+		System.out.println (Thread.currentThread ().toString ());
+		System.out.println ("비동기 테스트 입니다.");
 	}
 }

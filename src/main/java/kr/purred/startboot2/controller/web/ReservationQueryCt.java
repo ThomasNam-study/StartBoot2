@@ -45,9 +45,11 @@ public class ReservationQueryCt
 	}*/
 
 	@PostMapping
-	// @Async("taskExecutor")
 	public Callable<String> submitForm(@RequestParam ("courtName") String courtName, Model model)
 	{
+		reservationService.testFunc ();
+
+
 		System.out.println (Thread.currentThread ().toString ());
 		System.out.println ("여긴 들어왔나요?");
 

@@ -1,26 +1,18 @@
 package kr.purred.startboot2.controller.config;
 
+import org.springframework.aop.interceptor.AsyncUncaughtExceptionHandler;
+import org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
-import org.springframework.web.servlet.config.annotation.AsyncSupportConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+
+import java.util.concurrent.Executor;
 
 @Configuration
-public class AsyncConfiguration extends WebMvcConfigurationSupport // implements AsyncConfigurer
+public class AsyncConfiguration implements AsyncConfigurer
 {
-	// private final Logger log = LoggerFactory.getLogger(AsyncConfiguration.class);
-
 	@Override
-	protected void configureAsyncSupport (AsyncSupportConfigurer configurer)
-	{
-		// super.configureAsyncSupport (configurer);
-
-		configurer.setDefaultTimeout (5000);
-		configurer.setTaskExecutor (mvcTaskExecutor ());
-	}
-
-	/*@Override
 	@Bean(name = "taskExecutor")
 	public Executor getAsyncExecutor() {
 		// log.debug("Creating Async Task Executor");
@@ -38,13 +30,10 @@ public class AsyncConfiguration extends WebMvcConfigurationSupport // implements
 
 	@Override
 	public AsyncUncaughtExceptionHandler getAsyncUncaughtExceptionHandler() {
-		return (Throwable ex, Method method, Object... params) -> {
-			System.err.println (ex);
-			System.err.println (method);
-		};
-	}*/
+		return new SimpleAsyncUncaughtExceptionHandler ();
+	}
 
-	@Bean
+	/*@Bean
 	public ThreadPoolTaskExecutor mvcTaskExecutor()
 	{
 		ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor ();
@@ -52,5 +41,5 @@ public class AsyncConfiguration extends WebMvcConfigurationSupport // implements
 		taskExecutor.setThreadGroupName ("mvc-executor");
 
 		return taskExecutor;
-	}
+	}*/
 }
