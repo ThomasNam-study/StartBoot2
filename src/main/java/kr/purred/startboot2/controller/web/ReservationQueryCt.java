@@ -49,14 +49,7 @@ public class ReservationQueryCt
 	{
 		reservationService.testFunc ();
 
-
-		System.out.println (Thread.currentThread ().toString ());
-		System.out.println ("여긴 들어왔나요?");
-
 		return () -> {
-
-			System.out.println (Thread.currentThread ().toString ());
-			System.out.println ("여기 들어오나요?");
 			List<Reservation> reservationList;
 
 			if (courtName != null)

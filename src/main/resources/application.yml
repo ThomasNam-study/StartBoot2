@@ -11,3 +11,13 @@ spring:
   messages:
     basename: text/welcome
 
+  h2:
+    console:
+      enabled: true
+
+property:
+  test:
+    name: property depth test
+
+propertyTest: test
+propertyTestList: a,b,c
