@@ -61,6 +61,8 @@ dependencies {
     runtime 'org.apache.tomcat.embed:tomcat-embed-el'
     runtime 'org.apache.tomcat.embed:tomcat-embed-jasper'
 
+    compile("net.minidev:json-smart:2.2.1")
+
     compile "org.projectlombok:lombok"
     annotationProcessor "org.projectlombok:lombok"
 }
