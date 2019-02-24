@@ -15,6 +15,9 @@ spring:
     console:
       enabled: true
 
+server:
+  port: 9090
+
 property:
   test:
     name: property depth test
