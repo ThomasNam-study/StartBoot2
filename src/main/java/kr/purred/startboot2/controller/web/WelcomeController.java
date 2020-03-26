@@ -9,7 +9,7 @@ import java.util.Date;
 
 @Controller
 @RequestMapping("/welcome")
-public class WebcomeController
+public class WelcomeController
 {
 	@GetMapping
 	public String welcome (Model model)
